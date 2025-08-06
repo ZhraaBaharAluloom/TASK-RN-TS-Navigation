@@ -1,5 +1,6 @@
+import { router } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, View } from "react-native";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
 
 interface TripCardProps {
   trip: {
@@ -18,7 +19,9 @@ interface TripCardProps {
 const TripCard = ({ trip }: TripCardProps) => {
   return (
     <View style={styles.container}>
-      <Image source={{ uri: trip.img }} style={styles.image} />
+      <TouchableOpacity onPress={() => router.push(`/trips/${trip.slug}`)}>
+        <Image source={{ uri: trip.img }} style={styles.image} />
+      </TouchableOpacity>
     </View>
   );
 };

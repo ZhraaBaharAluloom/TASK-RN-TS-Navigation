@@ -2,12 +2,19 @@ import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 
 import trips from "@/data/trips";
+import { Stack, useLocalSearchParams } from "expo-router";
 
 const TripDetails = () => {
-  const trip = trips[0];
+  const { slug } = useLocalSearchParams();
+  const trip = trips.find((trip) => trip.slug === slug);
+
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{trip?.name}</Text>
+      <Stack.Screen
+        options={{
+          title: trip?.name,
+        }}
+      />
       <Image source={{ uri: trip?.img }} style={styles.image} />
       <View style={styles.infoContainer}>
         <Text style={styles.description}>City: {trip?.city}</Text>

@@ -1,5 +1,9 @@
-import Trip from "@/components/Trip";
+import { View, Text } from "react-native";
+import React from "react";
+import { Redirect } from "expo-router";
 
-export default function Index() {
-  return <Trip />;
-}
+const Index = () => {
+  return <Redirect href={"/trips"} />;
+};
+
+export default Index;
